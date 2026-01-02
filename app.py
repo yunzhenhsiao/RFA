@@ -62,7 +62,7 @@ def get_full_reference():
                 ref_list.append({"原始清單": name, "is_unit": False})
             
             # ref_list = 
-        to_csv_path = 'C:\\Users\\user\\workplace\\ref_df.csv'
+        to_csv_path = 'C:\\Users\\user\\workplace\\RFA\\ref_df.csv'
         pd.DataFrame(ref_list).to_csv(to_csv_path, index=False, encoding='utf-8-sig')
         print(f"✅ 提取的資料已成功儲存至 '{to_csv_path}'。")
         
@@ -82,7 +82,7 @@ def process_data(uploaded_file, mapping_dict):
     extracted_data = extracted_data.replace(r'\s+|-|一分處|一|ㄧ|分處|通訊', '', regex=True)
     extracted_data['單位'] = extracted_data['單位'].str.upper().apply(lambda x: standardize_unit(x, mapping_dict))
 
-    tocsv_path = 'C:\\Users\\user\\workplace\\extracted_data.csv'
+    tocsv_path = 'C:\\Users\\user\\workplace\\RFA\\extracted_data.csv'
     extracted_data.to_csv(tocsv_path, index=False, encoding='utf-8-sig')
     print(f"✅ 提取的資料已成功儲存至 '{tocsv_path}'。")
     
