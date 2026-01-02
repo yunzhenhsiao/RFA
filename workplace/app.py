@@ -72,7 +72,7 @@ st.title("📊 RFA 報名資料增量更新系統")
 
 # 設定路徑 (使用你 data_merge.py 中的 Excel 路徑)
 MASTER_DB_PATH = 'master_data.csv'
-REF_PATH = 'FB11407F通訊處20260101.xlsx'
+REF_PATH = 'workplace\FB11407F通訊處20260101.xlsx'
 
 # 讀取對照表 (整合 data_merge.py 的 Excel 清洗邏輯)
 @st.cache_data
@@ -167,4 +167,5 @@ if not master_df.empty:
             data=buffer.getvalue(),
             file_name=f"RFA報名統計表_{pd.Timestamp.now().strftime('%Y%m%d_%H%M')}.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
         )
