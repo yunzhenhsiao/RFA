@@ -50,7 +50,7 @@ def process_data(uploaded_file, mapping_dict):
     df = df.dropna(subset=['序', '連絡電話'])
     
     # 排除包含「取消」字樣的資料
-    df = df[~df['序'].astype(str).str.contains('取消')]
+    df = df[~df['序'].astype(str).str.contains('取消|轉班|轉讓', na=False)]
     
     # 提取「單位」和「姓名」
     extracted_data = df[['單位', '姓名']].copy()
