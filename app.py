@@ -36,7 +36,6 @@ def standardize_unit(val, mapping):
 @st.cache_data
 def get_full_reference():
     try:
-        # 建議維持讀取整張表，由邏輯來過濾
         ref_raw = pd.read_excel(REF_PATH, skiprows=0) 
         
         ref_list = []
@@ -46,23 +45,17 @@ def get_full_reference():
             code = str(row['代碼']).strip().upper() if pd.notna(row['代碼']) else ""
             name = str(row['單位名稱']).strip() if pd.notna(row['單位名稱']) else ""
             
-            # 過濾掉無意義的行
             if code in ["單位名稱", "NAN", "", "代碼"] and name in ["單位名稱", "NAN", "", "代碼"]:
                 continue
             
-            # --- 核心邏輯修正 ---
-            # 只有當代碼長度剛好是 5 碼時，才判定為通訊處
-            # 如果 code 其實是很長的一串字（如區部名稱），或是 name 是空的，就進入 else (標題模式)
             if len(code) == 5 and code != "NAN":
-                # 這是真正的通訊處
                 clean_name = name.replace("通訊處", "").replace("通訊", "")
                 full_display = f"{code}{clean_name}"
                 mapping[code] = clean_name
                 mapping[clean_name] = code
                 ref_list.append({"原始清單": full_display, "is_unit": True})
+
             else:
-                # 進入這裡代表：code 是空的，或者是長串的標題文字
-                # 我們優先取 name，如果 name 是空的，就取 code (因為標題可能跑去代碼欄)
                 title_text = name if name not in ["", "NAN"] else code
                 
                 if title_text not in ["", "NAN"]:
@@ -83,10 +76,10 @@ def get_full_reference():
 def process_data(uploaded_file, mapping_dict):
     df = pd.read_csv(uploaded_file, skiprows=1, encoding='utf-8-sig')
     df = df.dropna(subset=['序', '連絡電話'])
-    df = df[~df['序'].astype(str).str.contains('取消|轉班|轉讓', na=False)]
+    df = df[~df['序'].astype(str).str.contains('取消|轉班|轉讓|換卡取消|換班', na=False)]
     
     extracted_data = df[['單位', '姓名']].copy()
-    extracted_data = extracted_data.replace(r'\s+|-|一分處|一|ㄧ|分處|通訊', '', regex=True)
+    extracted_data = extracted_data.replace(r'\s+|-|分處|通訊', '', regex=True).replace(r'一|一|ㄧ', '一', regex=True)
     extracted_data['單位'] = extracted_data['單位'].str.upper().apply(lambda x: standardize_unit(x, mapping_dict))
 
     tocsv_path = 'C:\\Users\\user\\workplace\\RFA\\extracted_data.csv'
@@ -98,7 +91,7 @@ def process_data(uploaded_file, mapping_dict):
 # --- 4. Streamlit 介面 ---
 
 st.set_page_config(page_title="RFA 報名管理系統", layout="wide")
-st.title("📊 RFA 報名資料增量更新系統 (完整架構版)")
+st.title("📊 RFA 報名資料統計系統")
 
 MASTER_DB_PATH = 'master_data.csv'
 REF_PATH = 'FB11407F通訊處20260101.xlsx'
@@ -159,7 +152,6 @@ if not master_df.empty and not ref_df.empty:
         with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
             display_summary.to_excel(writer, sheet_name='人數統計(依順序)', index=False)
             master_df.to_excel(writer, sheet_name='詳細名單', index=False)
-        
         
         st.download_button(
             label="📥 下載完整統計報表",
