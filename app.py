@@ -36,32 +36,39 @@ def standardize_unit(val, mapping):
 @st.cache_data
 def get_full_reference():
     try:
-        # 從圖片 image_c50852.png 看到代碼標題在 31 列，故 skiprows=30
-        ref_raw = pd.read_excel(REF_PATH, skiprows=1) 
+        # 建議維持讀取整張表，由邏輯來過濾
+        ref_raw = pd.read_excel(REF_PATH, skiprows=0) 
         
         ref_list = []
         mapping = {}
         
         for _, row in ref_raw.iterrows():
-            # 取得代碼與名稱並清理
             code = str(row['代碼']).strip().upper() if pd.notna(row['代碼']) else ""
             name = str(row['單位名稱']).strip() if pd.notna(row['單位名稱']) else ""
             
-            if code in ["單位名稱", "NAN", "", "代碼"]:
+            # 過濾掉無意義的行
+            if code in ["單位名稱", "NAN", "", "代碼"] and name in ["單位名稱", "NAN", "", "代碼"]:
                 continue
             
-            if code != "" and code != "NAN":
-                # 這是通訊處：建立對照與顯示名稱
+            # --- 核心邏輯修正 ---
+            # 只有當代碼長度剛好是 5 碼時，才判定為通訊處
+            # 如果 code 其實是很長的一串字（如區部名稱），或是 name 是空的，就進入 else (標題模式)
+            if len(code) == 5 and code != "NAN":
+                # 這是真正的通訊處
                 clean_name = name.replace("通訊處", "").replace("通訊", "")
                 full_display = f"{code}{clean_name}"
                 mapping[code] = clean_name
                 mapping[clean_name] = code
                 ref_list.append({"原始清單": full_display, "is_unit": True})
             else:
-                # 這是大區標題 (如北二區...)，不具備代碼
-                ref_list.append({"原始清單": name, "is_unit": False})
+                # 進入這裡代表：code 是空的，或者是長串的標題文字
+                # 我們優先取 name，如果 name 是空的，就取 code (因為標題可能跑去代碼欄)
+                title_text = name if name not in ["", "NAN"] else code
+                
+                if title_text not in ["", "NAN"]:
+                    short_name = title_text[:4] # 只取前四個字
+                    ref_list.append({"原始清單": short_name, "is_unit": False})
             
-            # ref_list = 
         to_csv_path = 'C:\\Users\\user\\workplace\\RFA\\ref_df.csv'
         pd.DataFrame(ref_list).to_csv(to_csv_path, index=False, encoding='utf-8-sig')
         print(f"✅ 提取的資料已成功儲存至 '{to_csv_path}'。")
@@ -111,6 +118,10 @@ uploaded_files = st.file_uploader("上傳 RFA 報名 CSV", type="csv", accept_mu
 if uploaded_files:
     new_dfs = [process_data(f, mapping_dict) for f in uploaded_files]
     current_batch = pd.concat(new_dfs, ignore_index=True)
+
+    st.write("🔍 本次上傳預覽：")
+    st.dataframe(current_batch.head(), use_container_width=True)
+
     if st.button("🚀 確認合併至主資料庫"):
         final_df = pd.concat([master_df, current_batch], ignore_index=True).drop_duplicates(subset=['單位', '姓名'], keep='last')
         final_df.to_csv(MASTER_DB_PATH, index=False, encoding='utf-8-sig')

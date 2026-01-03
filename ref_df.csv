@@ -1,4 +1,5 @@
 ﻿原始清單,is_unit
+北一區部,False
 TP129富律,True
 TP170富驥,True
 TP176富仁,True
@@ -26,7 +27,7 @@ TP998富胤,True
 TP999富焱,True
 TPDX0富宥一,True
 TPDY0富宥,True
-北二區部鄧鈞鴻 02-66088915#201  (104471)台北市中山區建國北路二段236號6樓,True
+北二區部,False
 C1110邦雄,True
 C1111邦州,True
 C1160邦躍,True
@@ -51,7 +52,7 @@ TP917富璨,True
 TP920富傢,True
 TP937富璇一,True
 TP989富耕,True
-北三區部 蘇俊銘 02-23455111#27011 (104471)台北市中山區建國北路二段236號04樓,True
+北三區部,False
 HL258花福,True
 HL602花邦,True
 HL702花禾,True
@@ -74,7 +75,7 @@ TP818富優,True
 TP838富宅,True
 TP848富碩,True
 TP911富揚,True
-北四區部 梁國榕 02-23891828#1888 (100417)台北市中正區襄陽路9號9樓,True
+北四區部,False
 TP661富棠,True
 TP666富六,True
 TP688富漾,True
@@ -88,7 +89,7 @@ Y1760富有,True
 Y1800富琦,True
 Y1840富真,True
 Y1870富宣,True
-北五區部 陳玉金  02-23455111#25620  (110407)台北市信義區基隆路一段210號13樓,True
+北五區部,False
 IL139宜鼎一,True
 IL151宜鼎,True
 ILD00宜安羅東,True
@@ -115,7 +116,7 @@ TP819富年,True
 TP883富善,True
 TPDB0富仙,True
 TPDK0富皇,True
-北六區部 史明岳  02-23455111#26862 (110407)台北市信義區基隆路一段210號16樓,True
+北六區部,False
 A1500富誠,True
 TP512富能,True
 TP555富予,True
@@ -145,7 +146,7 @@ Y1650富薇,True
 Y1860花宸,True
 Y1900花米,True
 Y1980花鯉,True
-北七區部 張善輯 02-25706806#856 (105608)台北市松山區八德路三段20號8樓A、C區,True
+北七區部,False
 TP027富吉,True
 TP267富川一,True
 TP311富龍,True
@@ -166,7 +167,7 @@ TP901富碁,True
 TP988富多,True
 TPDS0富世,True
 TPDT0富,True
-北八區部  陳宏正  02-66208820#860  (220526)新北市板橋區三民路二段37號03樓,True
+北八區部,False
 F1280邦勁,True
 TA108富橋,True
 TA112邦橋,True
@@ -189,7 +190,7 @@ TP183富巨,True
 TP958富炫,True
 TPDN0邦軒,True
 Y1990花鑽,True
-北九區部 張吉政  02-23455111#27009 (104471)台北市中山區建國北路二段236號5樓,True
+北九區部,False
 KMD00金富金門,True
 TP009富德,True
 TP606富耀,True
@@ -209,7 +210,7 @@ Y1640花權,True
 Y1920花漾,True
 Y1930花岳,True
 Y1960花懿,True
-桃壢區部 羅元興 03-2620922#27201 (330010)桃園市桃園區中正路1088號04樓,True
+桃壢區部,False
 TY001桃大,True
 TY002桃吉,True
 TY003桃誠,True
@@ -228,7 +229,7 @@ TYD20桃豐,True
 TYD30桃仁,True
 TYD90桃駿,True
 Y1810花展,True
-竹苗區部  洪宏吉03-6116776#27509  (302099)新竹縣竹北巿光明五街212號13樓,True
+竹苗區部,False
 HC161竹光,True
 HC169竹全,True
 HC198竹峰,True
@@ -244,7 +245,7 @@ J1260竹浚,True
 K1160苗榮,True
 MLD00苗璽,True
 MLD50苗廷,True
-中一區部  黃建溢 (04)22590968 #20318  (407667)台中市西屯區市政路386號29樓,True
+中一區部,False
 B1600中彰,True
 B1690中恩,True
 CH152彰泰,True
@@ -264,7 +265,7 @@ TC861中暖,True
 TC869中暖一,True
 TC888中笙,True
 TC950中山,True
-中二區部 蘇孟暉 (04)22590968#20303 (407565)台中市西屯區文心路二段107號8樓,True
+中二區部,False
 B1630中鼎,True
 CH128彰益,True
 CH168彰順,True
@@ -287,7 +288,7 @@ TC950中山,True
 TC968中宏,True
 TCD20中宥,True
 TCDG0中亮,True
-中三區部 盧玫君 04-22590968#20535 (407667)台中市西屯區市政路386號31樓,True
+中三區部,False
 B1990中磊,True
 CHD19彰鑫一,True
 CHD40彰中,True
@@ -311,7 +312,7 @@ TC818中友,True
 TC823中豪,True
 TC831中磊一,True
 TCDF0中盈,True
-雲嘉區部 李守育 05-2345777#27981 (600578)嘉義市西區北港路251號14樓,True
+雲嘉區部,False
 CY139嘉保,True
 CY155嘉欣,True
 CY168嘉辰,True
@@ -329,7 +330,7 @@ Q1320雲揚,True
 Q1470雲正,True
 YLD10雲禾,True
 YLD20雲騰,True
-台南區部 劉炳良06-2262718#28300 (700002)台南市中西區民生路二段279號14樓,True
+台南區部,False
 D1660南創,True
 D1690南鑛,True
 D1760南廣,True
@@ -350,7 +351,7 @@ TND60南才,True
 TND61南才赤崁,True
 TND90南郡,True
 TNDA0南鑫,True
-高一區部 07-2382098#23793 (800204)高雄市新興區民族二路95號7樓,True
+高一區部,False
 KH182高富,True
 KH627高定,True
 KH716高仲,True
@@ -372,7 +373,7 @@ S1990高和,True
 TT179東盛,True
 TT188東晁,True
 V1140東陽,True
-高二區部 左雲 07-2611877#28450 (801731)高雄市前金區中華三路21號4樓,True
+高二區部,False
 KH139高佳,True
 KH568高進,True
 KH602高新,True
@@ -396,7 +397,7 @@ KHD50高瞻,True
 KHD90高人,True
 KHDB0高企,True
 S1980高明,True
-高三區部 盧浚銘 07-7011036#201 (831141)高雄市大寮區鳳屏一路268號3樓,True
+高三區部,False
 KH102高英,True
 KH258高福,True
 KH268高貴,True
@@ -413,7 +414,7 @@ PTD30屏榮,True
 S1340高渡,True
 S1920高翔,True
 S1970高權,True
-銀展五區,True
+銀展五區,False
 W1A10整銷北一,True
 W1B10整銷中一,True
 W1S10整銷嘉一,True
