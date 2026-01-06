@@ -61,3 +61,7 @@ RFA 報名資料自動化統計系統  https://rze3rje3hbz8ygwjqxp2hn.streamlit.
     4. 效能與 UX 的平衡
       效能優化：利用 st.cache_data 避免重複讀取大型 Excel 造成的效能損耗。
       交付價值：利用 st.download_button 實現一鍵產出雙分頁 Excel 報表，真正解決了從上傳到下載的完整工作流。
+
+---
+
+*本專案為2026寒假自主學習成果，透過解決真實世界的業務需求，深化對 Python 資料處理與 Web 應用開發的理解。*
