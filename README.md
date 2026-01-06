@@ -30,7 +30,7 @@ RFA 報名資料自動化統計系統  https://rze3rje3hbz8ygwjqxp2hn.streamlit.
 
 💻 執行環境
 
-    語言：Python 3.9+
+    語言：Python 3.13.7
     框架：Streamlit, Pandas, Openpyxl
     部署：支援 Streamlit Cloud 雲端部署
 
